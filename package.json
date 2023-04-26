@@ -166,6 +166,11 @@
         "category": "CMake"
       },
       {
+        "command": "cmake.configureWithDebugger",
+        "title": "Configure with CMake Debugger",
+        "category": "CMake"
+      },
+      {
         "command": "cmake.outline.configure",
         "title": "%cmake-tools.command.cmake.configure.title%",
         "icon": {
@@ -184,8 +189,21 @@
         "category": "CMake"
       },
       {
+        "command": "cmake.configureAllWithDebugger",
+        "title": "Configure all with debugger",
+        "category": "CMake"
+      },
+      {
         "command": "cmake.outline.configureAll",
         "title": "%cmake-tools.command.cmake.configureAll.title%",
+        "icon": {
+          "dark": "res/dark/configure-icon.svg",
+          "light": "res/light/configure-icon.svg"
+        }
+      },
+      {
+        "command": "cmake.outline.configureAllWithDebugger",
+        "title": "Configure All with Debugger",
         "icon": {
           "dark": "res/dark/configure-icon.svg",
           "light": "res/light/configure-icon.svg"
@@ -834,14 +852,19 @@
           "group": "navigation@1"
         },
         {
+          "command": "cmake.outline.configureAllWithDebugger",
+          "when": "view == cmake.outline && !cmake:isBuilding",
+          "group": "navigation@2"
+        },
+        {
           "command": "cmake.outline.buildAll",
           "when": "view == cmake.outline && !cmake:isBuilding && cmake:enableFullFeatureSet",
-          "group": "navigation@2"
+          "group": "navigation@3"
         },
         {
           "command": "cmake.outline.stopAll",
           "when": "view == cmake.outline && cmake:isBuilding && cmake:enableFullFeatureSet",
-          "group": "navigation@3"
+          "group": "navigation@4"
         },
         {
           "command": "cmake.outline.cleanAll",
@@ -911,29 +934,34 @@
           "group": "1_fileActions@1"
         },
         {
-          "command": "cmake.outline.buildAll",
-          "when": "cmake:enableFullFeatureSet && view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
+          "command": "cmake.outline.configureAllWithDebugger",
+          "when": "view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
           "group": "1_fileActions@2"
         },
         {
-          "command": "cmake.outline.cleanAll",
+          "command": "cmake.outline.buildAll",
           "when": "cmake:enableFullFeatureSet && view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
           "group": "1_fileActions@3"
         },
         {
+          "command": "cmake.outline.cleanAll",
+          "when": "cmake:enableFullFeatureSet && view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
+          "group": "1_fileActions@4"
+        },
+        {
           "command": "cmake.outline.cleanConfigureAll",
           "when": "view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
-          "group": "1_fileActions@4"
+          "group": "1_fileActions@5"
         },
         {
           "command": "cmake.outline.cleanRebuildAll",
           "when": "cmake:enableFullFeatureSet && view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
-          "group": "1_fileActions@5"
+          "group": "1_fileActions@6"
         },
         {
           "command": "cmake.outline.compileFile",
           "when": "cmake:enableFullFeatureSet && view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /compilable=true/",
-          "group": "1_fileActions@6"
+          "group": "1_fileActions@7"
         },
         {
           "command": "cmake.outline.compileFile",
@@ -942,6 +970,11 @@
         },
         {
           "command": "cmake.outline.configureAll",
+          "when": "view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
+          "group": "inline"
+        },
+        {
+          "command": "cmake.outline.configureAllWithDebugger",
           "when": "view == cmake.outline && viewItem =~ /nodeType=file/ && viewItem =~ /cmakelists=true/",
           "group": "inline"
         },
@@ -984,6 +1017,10 @@
         },
         {
           "command": "cmake.outline.configureAll",
+          "when": "resourceFilename == CMakeLists.txt"
+        },
+        {
+          "command": "cmake.outline.configureAllWithDebugger",
           "when": "resourceFilename == CMakeLists.txt"
         },
         {
